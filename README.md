@@ -24,4 +24,8 @@ samples, guidance on mobile development, and a full API reference.
 <img src="https://user-images.githubusercontent.com/65780663/181742379-c6bccbe7-a2d0-475d-a052-cba08f8953d0.png" width="250px" height="auto"/> 
 
 ## Cart Screen
+<div style="display: flex;">
 <img src="https://user-images.githubusercontent.com/65780663/181742370-c890024a-6d84-422c-bf11-9c651406327e.png" width="250px" height="auto"/>
+<img src="https://user-images.githubusercontent.com/65780663/181843271-a73e688b-7561-484d-b407-44a47e1a2136.png" width="250px" height="auto"/> 
+</div>
+
