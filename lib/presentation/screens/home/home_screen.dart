@@ -120,6 +120,7 @@ class _HoemScreenState extends State<HoemScreen> {
                             builder: (context) => CartScreen(
                               name: products?.products?.data?[index].name,
                               price: products?.products?.data?[index].price,
+                              productId: products?.products?.data?[index].sId,
                             ),
                           ),
                         );
@@ -160,7 +161,12 @@ class _HoemScreenState extends State<HoemScreen> {
                                     style: AppStyle.headline5.copyWith(),
                                   ),
                                   IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        // CartProvider()
+                                        //     .viewAllProduct()
+                                        //     .then((value) {});
+                                        print(products?.products?.data?[0].sId);
+                                      },
                                       icon: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:

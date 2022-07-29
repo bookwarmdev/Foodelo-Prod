@@ -26,8 +26,8 @@ class _AuthApi {
 }
 
 class _ProductApi {
-  String get cart => "user/cart/add-item";
-  String get addCart => "auth/signin";
+  // String get cart => "user/cart/add-item";
+  String get addCart => "user/cart/add-item";
   String get checkOut => "user/cart/checkout";
 }
 

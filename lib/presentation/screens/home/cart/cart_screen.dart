@@ -1,24 +1,20 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_progress_hud/flutter_progress_hud.dart';
-import 'package:flutter_svg/svg.dart';
+ import 'package:flutter_svg/svg.dart';
 import 'package:foodelo/controller/controller.dart';
 import 'package:foodelo/core/core.dart';
+import 'package:foodelo/data/models/user_auth_model.dart';
 import 'package:foodelo/presentation/routers/router.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CartScreen extends StatefulWidget {
   final String? name;
   final int? price;
-  final String? userId;
   final String? productId;
   const CartScreen({
     Key? key,
     this.name,
     this.price,
     this.productId,
-    this.userId,
   }) : super(key: key);
 
   @override
@@ -181,7 +177,7 @@ class _CartScreenState extends State<CartScreen> {
                                     horizontal: 20.0,
                                   ),
                                   child: Text(
-                                    "${productCount}",
+                                    "$productCount",
                                     style: AppStyle.caption.copyWith(
                                       fontSize: 20.0,
                                     ),
@@ -209,27 +205,20 @@ class _CartScreenState extends State<CartScreen> {
                           InkResponse(
                             child: AppButton(
                               onPressed: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text("Not Working Yet"),
-                                    backgroundColor: Colors.red,
-                                    duration: Duration(
-                                      seconds: 1,
-                                      microseconds: 100,
-                                    ),
-                                  ),
+                                CartProvider()
+                                    .addCart(
+                                  userId: UserAuth().getUserId,
+                                  quantity: productCount.toString(),
+                                  productId: widget.productId,
+                                )
+                                    .then(
+                                  (value) {
+                                    Navigator.pushReplacementNamed(
+                                      context,
+                                      Foodelo.checkOutScreen,
+                                    );
+                                  },
                                 );
-                                // CartProvider()
-                                //     .addCart(
-                                //   userId: "",
-                                //   quantity: productCount.toString(),
-                                //   productId: "",
-                                // )
-                                //     .then(
-                                //   (value) {
-
-                                //   },
-                                // );
                               },
                               buttonWidth: 80,
                               buttonHeigth: 15,

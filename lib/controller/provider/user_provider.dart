@@ -2,11 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:foodelo/core/core.dart';
+import 'package:foodelo/data/models/product_model.dart';
+import 'package:foodelo/data/models/user_auth_model.dart';
 import 'package:foodelo/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class UserProvider extends ChangeNotifier {
   UserModel? userModel;
+  final userAuth = UserAuth();
 
   Future<UserModel> singUp(
       {String? name, String? email, String? password}) async {
@@ -66,10 +69,11 @@ class UserProvider extends ChangeNotifier {
         jsonDecode(response.body),
       );
 
-      notifyListeners();
       print(' ----------------------  Login details ---------------------- ');
       print(response.body);
       print(' -------------------------------------------- ');
+      userAuth.setUserToken = userModel?.user?.data?.token;
+      userAuth.setUserId = userModel?.user?.data?.userId;
       return userModel!;
     } catch (e) {
       print(' ---------------------- Login Error ---------------------- ');
